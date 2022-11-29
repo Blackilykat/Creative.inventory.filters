@@ -1,0 +1,43 @@
+#
+# NOTE THAT THESE FILTERS APPLY TO BOTH ITEMS GOTTEN FROM THE CREATIVE
+# INVENTORY AND THE ONES MADE IN THE SERVER.
+# I'll be working to change this and make it a setting but I don't know
+# when it'll be done, please check the latest changes on github:
+# TODO INSERT LINK :)
+# If anything is missing or you have a suggestion, create an issue
+#
+
+
+# What to block in items
+Types:
+  # - DISPLAY # Name and/or lore of an item
+  - ATTRIBUTE_MODIFIERS # the modifiers of an item (for example +1000 attack damage when held, +infinite health when worn...)
+  # - ENCHANTMENTS # You know what those are :)
+  - ENTITY # A *CUSTOM* entity inside of spawners or spawner eggs. This includes nukes, lag spawn eggs etc. but doesn't include normal spawn eggs.
+  - ITEMS # Items inside a shulker box, chest etc.
+  # - HEAD # Custom player heads.
+  # - FIREWORK # Custom firework data
+  # - BLOCK # other block data not mentioned before, for example note blocks. If one specific block is causing issues, please use the blacklist below.
+  - BOOK # text inside of books.
+
+# List of items that the user cannot get, no matter if they have NBT or not.
+Item-blacklist:
+  # - ENDER_EYE
+  # - tnt
+
+# List of items that will have all their NBT data wiped no matter what.
+NBT-blacklist:
+  # - shulker_box
+  # - NOTE_BLOCK
+
+# List of items that will not have any NBT cleared.
+NBT-whitelist:
+  # - wooden_sword
+  # - stick
+
+# TODO this is broken, i'll fix it in later version.
+Blacklisted-items-replace:
+  Item: air # set air to leave the slot empty
+  Amount: 0
+  Name: "&c&lYou aren't allowed to take that item."
+  Lore: "&7That item has been blacklisted by an admin.\nIf you think this is a mistake, please contact them."

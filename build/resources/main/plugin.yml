@@ -1,0 +1,7 @@
+name: Prevent.saved.hotbars
+version: '${project.version}'
+main: me.blackilykat.prevent.saved.hotbars.Main
+api-version: 1.19
+prefix: PreventSavedHotbars
+authors: [ Blackilykat ]
+description: Stops players from getting custom items from saved hotbars in creative
