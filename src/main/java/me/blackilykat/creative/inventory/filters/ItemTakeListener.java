@@ -28,39 +28,39 @@ public class ItemTakeListener  implements Listener {
         if(nbti.hasKey("pages")) nbtTypeList.add(NBTType.BOOK);
 
         if(nbtTypeList.contains(NBTType.DISPLAY)) {
-            Main.LOGGER.info("It has display data");
+            if(Config.debug) Main.LOGGER.info("It has display data");
             if(Config.types.contains(NBTType.DISPLAY)) nbti.removeKey("display");
         }
         if(nbtTypeList.contains(NBTType.ATTRIBUTE_MODIFIERS)) {
-            Main.LOGGER.info("It has attribute modifiers");
+            if(Config.debug) Main.LOGGER.info("It has attribute modifiers");
             if(Config.types.contains(NBTType.ATTRIBUTE_MODIFIERS)) nbti.removeKey("AttributeModifiers");
         }
         if(nbtTypeList.contains(NBTType.ENCHANTMENTS)) {
-            Main.LOGGER.info("It has enchantments");
+            if(Config.debug) Main.LOGGER.info("It has enchantments");
             if(Config.types.contains(NBTType.ENCHANTMENTS)) nbti.removeKey("Enchantments");
         }
         if(nbtTypeList.contains(NBTType.ENTITY)) {
-            Main.LOGGER.info("It has entity data");
+            if(Config.debug) Main.LOGGER.info("It has entity data");
             if(Config.types.contains(NBTType.ENTITY)) nbti.removeKey("EntityTag");
         }
         if(nbtTypeList.contains(NBTType.ITEMS)) {
-            Main.LOGGER.info("It contains items");
+            if(Config.debug) Main.LOGGER.info("It contains items");
             if(Config.types.contains(NBTType.ITEMS)) nbti.removeKey("BlockEntityTag");
         }
         if(nbtTypeList.contains(NBTType.HEAD)) {
-            Main.LOGGER.info("It's a custom player head'");
+            if(Config.debug) Main.LOGGER.info("It's a custom player head'");
             if(Config.types.contains(NBTType.HEAD)) nbti.removeKey("SkullOwner");
         }
         if(nbtTypeList.contains(NBTType.BLOCK)) {
-            Main.LOGGER.info("It has block data");
+            if(Config.debug) Main.LOGGER.info("It has block data");
             if(Config.types.contains(NBTType.BLOCK)) nbti.removeKey("BlockStateTag");
         }
         if(nbtTypeList.contains(NBTType.FIREWORK)) {
-            Main.LOGGER.info("It's a custom firework");
+            if(Config.debug) Main.LOGGER.info("It's a custom firework");
             if(Config.types.contains(NBTType.FIREWORK)) nbti.removeKey("Fireworks");
         }
         if(nbtTypeList.contains(NBTType.BOOK)) {
-            Main.LOGGER.info("It's a written book");
+            if(Config.debug) Main.LOGGER.info("It's a written book");
             if(Config.types.contains(NBTType.BOOK)) nbti.removeKey("pages");
         }
         event.setItem(nbti.getItem());

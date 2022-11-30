@@ -27,10 +27,14 @@ public class PacketListeners {
                 if(event.getPlayer().hasPermission("preventsavedhotbars.bypass." + item.getType().toString().toLowerCase())) return; // check if player can bypass a specific item
                 if(Config.itemBlacklist.contains(item.getType())) {
                     packet.getItemModifier().write(0, Config.blacklistReplacementItem);
+                    event.setPacket(packet);
+                    event.getPlayer().updateInventory();
                     return;
                 }
                 if(Config.nbtBlacklist.contains(item.getType())) {
                     packet.getItemModifier().write(0, new ItemStack(item.getType(), item.getAmount()));
+                    event.setPacket(packet);
+                    event.getPlayer().updateInventory();
                     return;
                 }
                 if(item.getType() == Material.AIR || Config.nbtWhitelist.contains(item.getType())) return; // == Material.AIR stops item from vanishing when picked up with the cursor. kinda hardcoded but it works so idc

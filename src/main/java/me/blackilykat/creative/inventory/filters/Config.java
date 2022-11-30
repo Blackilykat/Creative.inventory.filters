@@ -13,6 +13,7 @@ public class Config {
     public static ArrayList<Material> nbtBlacklist = new ArrayList<>();
     public static ArrayList<Material> nbtWhitelist = new ArrayList<>();
     public static ItemStack blacklistReplacementItem;
+    public static boolean debug = false;
 
     static void load() {
         types.clear();
@@ -34,34 +35,53 @@ public class Config {
                 case "BLOCK" -> types.add(NBTType.BLOCK);
                 case "BOOK" -> types.add(NBTType.BOOK);
             }
+            if(debug) Main.LOGGER.info("Found value " + s + " in Types");
         }
 
         for (String s : config.getStringList("Item-blacklist")) {
             itemBlacklist.add(Material.getMaterial(s.toUpperCase()));
+            if(debug) Main.LOGGER.info("Found value " + s + " in Item-blacklist");
         }
 
         for (String s : config.getStringList("NBT-blacklist")) {
             nbtBlacklist.add(Material.getMaterial(s.toUpperCase()));
+            if(debug) Main.LOGGER.info("Found value " + s + " in NBT-blacklist");
         }
 
         for (String s : config.getStringList("NBT-whitelist")) {
             nbtWhitelist.add(Material.getMaterial(s.toUpperCase()));
+            if(debug) Main.LOGGER.info("Found value " + s + " in NBT-whitelist");
         }
 
         blacklistReplacementItem = new ItemStack(
                 Material.getMaterial(config.getConfigurationSection("Blacklisted-items-replace").getString("Item").toUpperCase()),
-//                Material.getMaterial("PAPER"),
                 config.getConfigurationSection("Blacklisted-items-replace").getInt("Amount")
         );
-        // kinda messy but this just sets the display name and lore to the one set in the config and applies color codes to them
-        blacklistReplacementItem.getItemMeta().setDisplayName( ChatColor.translateAlternateColorCodes('&', config.getConfigurationSection("Blacklisted-items-replace").getString("Name")) );
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add(ChatColor.translateAlternateColorCodes('&', config.getConfigurationSection("Blacklisted-items-replace").getString("Lore")));
-        blacklistReplacementItem.getItemMeta().setLore(lore);
+        if(blacklistReplacementItem.getType() != Material.AIR) { // else it cries cuz no item meta to set display name
+            // kinda messy but this just sets the display name and lore to the one set in the config and applies color codes to them
+            blacklistReplacementItem.getItemMeta().setDisplayName(ChatColor.translateAlternateColorCodes('&', config.getConfigurationSection("Blacklisted-items-replace").getString("Name")));
+            ArrayList<String> lore = new ArrayList<>();
+            lore.add(ChatColor.translateAlternateColorCodes('&', config.getConfigurationSection("Blacklisted-items-replace").getString("Lore")));
+            blacklistReplacementItem.getItemMeta().setLore(lore);
+        }
 
-        Main.LOGGER.info("Item blacklist: ");
-        for (Material material : itemBlacklist) {
-            Main.LOGGER.info(" - "+material.toString());
+        if(debug) {
+            Main.LOGGER.info("Enabled filters:");
+            for (NBTType type : types) {
+                Main.LOGGER.info(" - "+type.toString());
+            }
+            Main.LOGGER.info("Item blacklist:");
+            for (Material material : itemBlacklist) {
+                Main.LOGGER.info(" - "+material.toString());
+            }
+            Main.LOGGER.info("NBT blacklist:");
+            for (Material material : nbtBlacklist) {
+                Main.LOGGER.info(" - "+material.toString());
+            }
+            Main.LOGGER.info("NBT whitelist:");
+            for (Material material : nbtWhitelist) {
+                Main.LOGGER.info(" - "+material.toString());
+            }
         }
 
     }
