@@ -23,8 +23,8 @@ public class PacketListeners {
                 PacketContainer packet = event.getPacket();
                 ItemStack item = packet.getItemModifier().read(0);
                 event.getPlayer().getInventory().addItem(Config.blacklistReplacementItem);
-                if(event.getPlayer().hasPermission("preventsavedhotbars.bypass")) return; // check if player can bypass all items
-                if(event.getPlayer().hasPermission("preventsavedhotbars.bypass." + item.getType().toString().toLowerCase())) return; // check if player can bypass a specific item
+                if(event.getPlayer().hasPermission("creativeinventoryfilters.bypass")) return; // check if player can bypass all items
+                if(event.getPlayer().hasPermission("creativeinventoryfilters.bypass." + item.getType().toString().toLowerCase())) return; // check if player can bypass a specific item
                 if(Config.itemBlacklist.contains(item.getType())) {
                     packet.getItemModifier().write(0, Config.blacklistReplacementItem);
                     event.setPacket(packet);

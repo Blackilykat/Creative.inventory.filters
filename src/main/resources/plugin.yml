@@ -1,13 +1,25 @@
 name: Creative.inventory.filters
-version: '1.0.0'
+version: '1.0.1'
 main: me.blackilykat.creative.inventory.filters.Main
 api-version: 1.19
 prefix: CreativeInventoryFilters
 authors: [ Blackilykat ]
 description: Stops players from getting custom items from saved hotbars in creative
-depend: [NBTAPI]
+depend: [NBTAPI, CommandAPI]
 permissions:
-  preventsavedhotbars:
+  creativeinventoryfilters:
     bypass:
       description: Allows you to bypass the item filter, letting you get any item no matter what. You can set a block after this to specify only one block.
       default: op
+    reload:
+      description: Allows you to reload the config
+      default: op
+    set:
+      description: Allows you to change something in the config in-game
+      default: op
+    debug:
+      description: Gives access to the /debug command, give this to anyone with its sub-permissions
+      default: false
+      config:
+        description: Gives access to the config debugging command
+        default: false

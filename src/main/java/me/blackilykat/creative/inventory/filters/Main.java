@@ -14,9 +14,10 @@ public final class Main extends JavaPlugin {
         plugin = this;
         getServer().getPluginManager().registerEvents(new ItemTakeListener(), this);
         PacketListeners.add();
-        LOGGER.info("Loading config...");
         Config.load();
         LOGGER.info("Config loaded!");
+        Commands.register();
+        LOGGER.info("Registered commands!");
         LOGGER.info("Creative inventory filters loaded.");
 
     }

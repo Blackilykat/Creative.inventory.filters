@@ -6,7 +6,7 @@
 
     <groupId>me.blackilykat</groupId>
     <artifactId>creative.item.filters</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>Creative.item.filters</name>
@@ -102,7 +102,7 @@
         <dependency>
             <groupId>dev.jorel</groupId>
             <artifactId>commandapi-core</artifactId>
-            <version>8.5.1</version>
+            <version>8.7.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

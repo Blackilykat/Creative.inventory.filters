@@ -21,6 +21,7 @@ public class Config {
         nbtBlacklist.clear();
         nbtWhitelist.clear();
         Main.plugin.saveDefaultConfig();
+        Main.plugin.reloadConfig();
         FileConfiguration config = Main.plugin.getConfig();
 
         for (String s : config.getStringList("Types")) {
