@@ -88,6 +88,21 @@ public class Config {
     }
     //TODO: saving config
     public static void save() {
-        Main.LOGGER.info("This isn't made yet!");
+        ArrayList<String> stypes = new ArrayList<>();
+        ArrayList<String> sitemBlacklist = new ArrayList<>();
+        ArrayList<String> snbtBlacklist = new ArrayList<>();
+        ArrayList<String> snbtWhitelist = new ArrayList<>();
+
+        types.forEach(type -> stypes.add(type.toString()));
+        itemBlacklist.forEach(type -> sitemBlacklist.add(type.toString()));
+        nbtBlacklist.forEach(type -> snbtBlacklist.add(type.toString()));
+        nbtWhitelist.forEach(type -> snbtWhitelist.add(type.toString()));
+
+        Main.plugin.getConfig().set("Types", stypes);
+        Main.plugin.getConfig().set("Item-blacklist", sitemBlacklist);
+        Main.plugin.getConfig().set("NBT-blacklist", snbtBlacklist);
+        Main.plugin.getConfig().set("NBT-whitelist", snbtWhitelist);
+        Main.plugin.saveConfig();
+        Chat.sendConsole("Saved config!");
     }
 }
