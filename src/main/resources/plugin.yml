@@ -5,7 +5,7 @@ api-version: 1.19
 prefix: CreativeInventoryFilters
 authors: [ Blackilykat ]
 description: Stops players from getting custom items from saved hotbars in creative
-depend: [NBTAPI, CommandAPI]
+depend: [NBTAPI, CommandAPI, ProtocolLib]
 permissions:
   creativeinventoryfilters:
     bypass:
