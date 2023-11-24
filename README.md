@@ -1,3 +1,6 @@
+## This plugin is no longer mantained and worked on. You'll unlikely get support, bugfixes or new features.
+It was created because of a server I was planning to run with some friends, but the project died and I've been busy with other projects. Feel free to fork this if you want to pick up development or introduce a new feature/fix a bug.
+
 # Creative inventory filters
 A spigot plugin that applies filters to the items that player take from the creataive inventory.
 
